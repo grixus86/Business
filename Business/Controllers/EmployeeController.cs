@@ -9,13 +9,11 @@ namespace Business.Controllers
     {
         private readonly string _connectionString;
 
-        // Constructor của EmployeeController
         public EmployeeController()
         {
-            _connectionString = "Server=DESKTOP-RJGQ1SN;Database=Employee;Trusted_Connection=True;";
+            _connectionString = "Server=.\\SQLEXPRESS;Database=Employee;Trusted_Connection=True;";
         }
 
-        // Phương thức hiển thị danh sách nhân viên
         public IActionResult Index()
         {
             List<EmployeeModel> employeeList = new List<EmployeeModel>();
@@ -24,7 +22,7 @@ namespace Business.Controllers
             {
                 connection.Open();
 
-                string query = "SELECT Id, FirstName, LastName, Email FROM Staff";
+                string query = "SELECT Id, FirstName, LastName, Email, Department FROM Staff";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -35,13 +33,15 @@ namespace Business.Controllers
                             string firstName = reader.GetString(1);
                             string lastName = reader.GetString(2);
                             string email = reader.GetString(3);
+                            string department = reader.GetString(4);
 
                             var employee = new EmployeeModel
                             {
                                 Id = employeeID,
                                 FirstName = firstName,
                                 LastName = lastName,
-                                Email = email
+                                Email = email,
+                                Department = department
                             };
 
                             employeeList.Add(employee);
@@ -50,7 +50,6 @@ namespace Business.Controllers
                 }
             }
 
-            // Truyền danh sách nhân viên vào View thông qua Model
             return View(employeeList);
         }
 
@@ -60,30 +59,30 @@ namespace Business.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddEmployee(EmployeeModel Staff)
+        public IActionResult AddEmployee(EmployeeModel employee)
         {
             if (ModelState.IsValid)
             {
-                using (SqlConnection connection = new SqlConnection("Server=DESKTOP-RJGQ1SN;Database=Employee;Trusted_Connection=True;"))
+                using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
 
-                    string query = "INSERT INTO Staff (FirstName, LastName, Email) OUTPUT INSERTED.Id VALUES (@FirstName, @LastName, @Email);";
+                    string query = "INSERT INTO Staff (FirstName, LastName, Email, Department) OUTPUT INSERTED.Id VALUES (@FirstName, @LastName, @Email, @Department);";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@FirstName", Staff.FirstName);
-                        command.Parameters.AddWithValue("@LastName", Staff.LastName);
-                        command.Parameters.AddWithValue("@Email", Staff.Email);
+                        command.Parameters.AddWithValue("@FirstName", employee.FirstName);
+                        command.Parameters.AddWithValue("@LastName", employee.LastName);
+                        command.Parameters.AddWithValue("@Email", employee.Email);
+                        command.Parameters.AddWithValue("@Department", employee.Department);
 
                         int newId = (int)command.ExecuteScalar();
-                        // Dùng giá trị 'newId' trong code của bạn nếu cần thiết.
                     }
                 }
 
                 return RedirectToAction("Index");
             }
 
-            return View(Staff);
+            return View(employee);
         }
     }
 }

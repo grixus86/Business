@@ -16,5 +16,8 @@ namespace Business.Models
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+
+        public string Department { get; set; }
+
     }
 }
