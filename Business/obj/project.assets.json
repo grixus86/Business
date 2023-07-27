@@ -470,19 +470,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\thinh.nguyenx\\.nuget\\packages\\": {}
+    "C:\\Users\\nxthi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thinh.nguyenx\\source\\repos\\Business\\Business\\Business.csproj",
+      "projectUniqueName": "C:\\Users\\nxthi\\source\\repos\\Business\\Business\\Business\\Business.csproj",
       "projectName": "Business",
-      "projectPath": "C:\\Users\\thinh.nguyenx\\source\\repos\\Business\\Business\\Business.csproj",
-      "packagesPath": "C:\\Users\\thinh.nguyenx\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thinh.nguyenx\\source\\repos\\Business\\Business\\obj\\",
+      "projectPath": "C:\\Users\\nxthi\\source\\repos\\Business\\Business\\Business\\Business.csproj",
+      "packagesPath": "C:\\Users\\nxthi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nxthi\\source\\repos\\Business\\Business\\Business\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\thinh.nguyenx\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nxthi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -490,7 +490,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -533,7 +532,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
