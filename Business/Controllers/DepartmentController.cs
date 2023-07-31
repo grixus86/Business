@@ -10,7 +10,7 @@ namespace Business.Controllers
 
         public DepartmentController()
         {
-            _connectionString = "Server=DESKTOP-RJGQ1SN;Database=Employee;Trusted_Connection=True;";
+            _connectionString = "server=localhost\\SQLEXPRESS;Database=Employee;Trusted_Connection=True;";
         }
 
         public IActionResult Index()
