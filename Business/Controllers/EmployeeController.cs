@@ -9,31 +9,7 @@ namespace Business.Controllers
     {
         private readonly string _connectionString = "server=localhost\\SQLEXPRESS;Database=Employee;Trusted_Connection=True;";
 
-        private List<DepartmentModel> GetExistingDepartments()
-        {
-            List<DepartmentModel> departments = new List<DepartmentModel>();
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                connection.Open();
-                string query = "SELECT Id, Name FROM Department";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var department = new DepartmentModel()
-                            {
-                                Id = reader.GetInt32(0),
-                                Name = reader.GetString(1),
-                            };
-                            departments.Add(department);
-                        }
-                    }
-                }
-            }
-            return departments;
-        }
+
 
         public IActionResult Index()
         {
@@ -66,9 +42,31 @@ namespace Business.Controllers
             }
             return View(employeeList);
         }
-
-
-
+        private List<DepartmentModel> GetExistingDepartments()
+        {
+            List<DepartmentModel> departments = new List<DepartmentModel>();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "SELECT Id, Name FROM Department";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var department = new DepartmentModel()
+                            {
+                                Id = reader.GetInt32(0),
+                                Name = reader.GetString(1),
+                            };
+                            departments.Add(department);
+                        }
+                    }
+                }
+            }
+            return departments;
+        }
 
         public IActionResult AddEmployee()
         {
@@ -126,6 +124,7 @@ namespace Business.Controllers
                         command.Parameters.AddWithValue("@DepartmentId", employee.DepartmentId);
                         command.ExecuteNonQuery();
                     }
+
                 }
                 TempData["ToastType"] = "success";
                 TempData["ToastMessage"] = "Chỉnh sửa thành công!";
@@ -151,7 +150,7 @@ namespace Business.Controllers
                 return View(employee);
             }
 
-            if (ModelState.IsValid)
+             if (ModelState.IsValid)
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
@@ -164,7 +163,6 @@ namespace Business.Controllers
                         command.Parameters.AddWithValue("@Email", employee.Email);
                         command.Parameters.AddWithValue("@DepartmentId", employee.DepartmentId);
                         command.ExecuteNonQuery();
-                        //int newId = (int)command.ExecuteScalar();
                     }
                 }
                 TempData["ToastType"] = "success";

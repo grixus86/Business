@@ -41,6 +41,18 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "EcmaScript.Net": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Forge.OpenAI": {
+              "target": "Package",
+              "version": "[1.1.5, )"
+            },
+            "OpenAI": {
+              "target": "Package",
+              "version": "[1.7.2, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.5, )"
