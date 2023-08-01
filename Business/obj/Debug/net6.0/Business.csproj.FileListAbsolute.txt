@@ -155,3 +155,8 @@ C:\Users\thinh.nguyenx\source\repos\Business\Business\Business\bin\Debug\net6.0\
 C:\Users\thinh.nguyenx\source\repos\Business\Business\Business\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\thinh.nguyenx\source\repos\Business\Business\Business\bin\Debug\net6.0\OpenAI_API.dll
 C:\Users\thinh.nguyenx\source\repos\Business\Business\Business\bin\Debug\net6.0\EcmaScript.NET.dll
+C:\Users\nxthi\source\repos\Business\Business\Business\bin\Debug\net6.0\EcmaScript.NET.dll
+C:\Users\nxthi\source\repos\Business\Business\Business\bin\Debug\net6.0\Forge.OpenAI.dll
+C:\Users\nxthi\source\repos\Business\Business\Business\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\nxthi\source\repos\Business\Business\Business\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\nxthi\source\repos\Business\Business\Business\bin\Debug\net6.0\OpenAI_API.dll

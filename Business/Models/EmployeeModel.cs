@@ -21,5 +21,8 @@ namespace Business.Models
 
         public string DepartmentName { get; set; }
 
+        public string Password { get; set; }
+
+        public string Roles { get; set; }
     }
 }

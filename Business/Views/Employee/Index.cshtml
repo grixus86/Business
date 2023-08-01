@@ -26,6 +26,7 @@
                         <th>LastName</th>
                         <th>Email</th>
                         <th>Department</th>
+                        <th>Role</th>
                         <th>Transaction</th>
                     </tr>
                     <tbody class="table-border-bottom-0">
@@ -36,7 +37,9 @@
                                 <td>@employee.FirstName</td>
                                 <td>@employee.LastName</td>
                                 <td>@employee.Email</td>
+                                <td>@employee.Roles</td>
                                 <td>@employee.DepartmentName</td>
+
 
                                 <td>
                                     <form method="post" action="@Url.Action("DeleteEmployee", "Employee")">
