@@ -10,9 +10,8 @@ namespace Business.Controllers
 
         public DepartmentController()
         {
-            _connectionString = "server=DESKTOP-RJGQ1SN;Database=Employee;Trusted_Connection=True;";
+            _connectionString = "server=.\\SQLEXPRESS;Database=Employee;Trusted_Connection=True;";
         }
-
         public IActionResult Index()
         {
             List<DepartmentModel> departmentList = new List<DepartmentModel>();

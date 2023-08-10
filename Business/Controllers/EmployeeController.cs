@@ -7,7 +7,7 @@ namespace Business.Controllers
 {
     public class EmployeeController : Controller
     {
-        private readonly string _connectionString = "server=DESKTOP-RJGQ1SN;Database=Employee;Trusted_Connection=True;";
+        private readonly string _connectionString = "server=.\\SQLEXPRESS;Database=Employee;Trusted_Connection=True;";
 
 
 
@@ -17,9 +17,8 @@ namespace Business.Controllers
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                string query = "SELECT Staff.Id, Staff.FirstName, Staff.LastName, Staff.Email, Staff.DepartmentId, Staff.Roles, Department.Name AS DepartmentName " +
-                               "FROM Staff " +
-                               "INNER JOIN Department ON Staff.DepartmentId = Department.Id";
+                string query = "SELECT Staff.Id, Staff.FirstName, Staff.LastName, Staff.Email, Staff.DepartmentId, Department.Name AS DepartmentName, Staff.RoleId, Roles.Name AS RoleName " +
+                               "FROM Staff INNER JOIN Department ON Staff.DepartmentId = Department.Id INNER JOIN Roles ON Staff.RoleId = Roles.Id";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -34,7 +33,8 @@ namespace Business.Controllers
                                 Email = reader.GetString(3),
                                 DepartmentId = reader.GetInt32(4),
                                 DepartmentName = reader.GetString(5),
-                                Roles = reader.GetString(6)
+                                RoleId = reader.GetInt32(6),
+                                RoleName = reader.GetString(7)
                             };
                             employeeList.Add(employee);
                         }
@@ -126,7 +126,7 @@ namespace Business.Controllers
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Staff (FirstName, LastName, Email, DepartmentId, Password, Roles) VALUES (@FirstName, @LastName, @Email, @DepartmentId, @Password, @Roles);";
+                    string query = "INSERT INTO Staff (FirstName, LastName, Email, DepartmentId, Password, RoleId) VALUES (@FirstName, @LastName, @Email, @DepartmentId, @Password, @RoleId);";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@FirstName", employee.FirstName);
@@ -134,7 +134,7 @@ namespace Business.Controllers
                         command.Parameters.AddWithValue("@Email", employee.Email);
                         command.Parameters.AddWithValue("@DepartmentId", employee.DepartmentId);
                         command.Parameters.AddWithValue("@Password", employee.Password);
-                        command.Parameters.AddWithValue("@Roles", employee.Roles);
+                        command.Parameters.AddWithValue("@RoleId", employee.RoleId);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -154,7 +154,7 @@ namespace Business.Controllers
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                string query = "SELECT Id, FirstName, LastName, Email, DepartmentId, Roles FROM Staff WHERE Id = @Id";
+                string query = "SELECT Id, FirstName, LastName, Email, DepartmentId, RoleId FROM Staff WHERE Id = @Id";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", id);
@@ -169,7 +169,7 @@ namespace Business.Controllers
                                 LastName = reader.GetString(2),
                                 Email = reader.GetString(3),
                                 DepartmentId = reader.GetInt32(4),
-                                Roles = reader.GetString(5)
+                                RoleId = reader.GetInt32(5)
                             };
                             return View(employee);
                         }
@@ -190,7 +190,7 @@ namespace Business.Controllers
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE Staff SET FirstName = @FirstName, LastName = @LastName, Email = @Email, DepartmentId = @DepartmentId, Roles = @Roles WHERE Id = @Id;";
+                    string query = "UPDATE Staff SET FirstName = @FirstName, LastName = @LastName, Email = @Email, DepartmentId = @DepartmentId, RoleId = @RoleId WHERE Id = @Id;";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Id", employee.Id);
@@ -198,7 +198,7 @@ namespace Business.Controllers
                         command.Parameters.AddWithValue("@LastName", employee.LastName);
                         command.Parameters.AddWithValue("@Email", employee.Email);
                         command.Parameters.AddWithValue("@DepartmentId", employee.DepartmentId);
-                        command.Parameters.AddWithValue("@Roles", employee.Roles);
+                        command.Parameters.AddWithValue("@RoleId", employee.RoleId);
                         command.ExecuteNonQuery();
                     }
                 }
