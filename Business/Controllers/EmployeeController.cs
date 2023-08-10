@@ -7,7 +7,7 @@ namespace Business.Controllers
 {
     public class EmployeeController : Controller
     {
-        private readonly string _connectionString = "server=.\\SQLEXPRESS;Database=Employee;Trusted_Connection=True;";
+        private readonly string _connectionString = "server=DESKTOP-RJGQ1SN;Database=Employee;Trusted_Connection=True;";
 
 
 
