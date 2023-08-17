@@ -10,8 +10,9 @@ namespace Business.Controllers
 
         public DepartmentController()
         {
-            _connectionString = "server=DESKTOP-RJGQ1SN;Database=Employee;Trusted_Connection=True;";
+            _connectionString = "Server=.\\SQLEXPRESS;Database=Employee;Trusted_Connection=True;";
         }
+
         public IActionResult Index()
         {
             List<DepartmentModel> departmentList = new List<DepartmentModel>();
@@ -73,24 +74,6 @@ namespace Business.Controllers
             }
 
             return View(department);
-        }
-
-        [HttpPost]
-        public IActionResult DeleteDepartment(int id)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                connection.Open();
-
-                string query = "DELETE FROM Department WHERE Id = @Id;";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@Id", id);
-                    command.ExecuteNonQuery();
-                }
-            }
-
-            return RedirectToAction("Index");
         }
     }
 }

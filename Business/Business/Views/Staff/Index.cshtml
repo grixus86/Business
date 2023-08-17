@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>EMPLOYEE LIST</title>
+    </head>
+    <body>
+        <h1>DETAILS</h1>
+
+<script>
+
+
+        </script>
+
+        <div class="card">
+            <div class="table-responsive text-nowrap m-5">
+                <a class="btn btn-success mb-3" asp-area="Views" asp-controller="Staff" asp-action="AddStaff">
+                    Add Staff <i class="bx bx-plus"></i>
+                </a>
+                <a class="btn btn-success mb-3" asp-area="Views" asp-controller="Department" asp-action="AddDepartment">
+                    Add Department <i class="bx bx-plus"></i>
+                </a>
+                <table class="table table-bordered" id="usersTable" width="100%" cellspacing="0">
+                    <tr>
+                        <th>EmployeeID</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Role</th>
+                        <th>Transaction</th>
+                    </tr>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var staff in Model)
+                        {
+                            <tr>
+                                <td>@staff.Id</td>
+                                <td>@staff.FirstName</td>
+                                <td>@staff.LastName</td>
+                                <td>@staff.Email</td>
+                                <td>@staff.DepartmentName</td>
+                                <td>@staff.RoleName</td>
+                                <td>
+                                    <form method="post" action="@Url.Action("DeleteStaff", "Staff")">
+                                        <a class="btn btn-success" href="@Url.Action("EditStaff", "Staff", new { id = staff.Id })">Edit</a>
+                                        <input type="hidden" name="id" value="@staff.Id" />
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @section Scripts{
+            <script src="~/js/userIndex.js" type="application/ecmascript"></script>
+        }
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".btn-success").click(function (event) {
+                    event.preventDefault();
+                    var url = $(this).attr("href");
+                    window.location.href = url;
+                });
+            });
+        </script>
+        @if (TempData["ToastType"] != null && TempData["ToastMessage"] != null)
+        {
+            <script>
+                Toastify({
+                    text: '@Html.Raw(TempData["ToastMessage"])',
+                    duration: 3000,
+                    gravity: 'bottom',
+                    position: 'right',
+                    backgroundColor: '@TempData["ToastType"]'
+                }).showToast();
+            </script>
+
+        }
+
+    </body>
+    </html>
+
+}

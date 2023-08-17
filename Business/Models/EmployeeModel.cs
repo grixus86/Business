@@ -17,14 +17,7 @@ namespace Business.Models
         [EmailAddress]
         public string Email { get; set; }
 
-        public int DepartmentId { get; set; }
-
-        public string DepartmentName { get; set; }
-
-        public string Password { get; set; }
-        public int RoleId { get; set; }
-
-        public string RoleName { get; set; }
+        public string Department { get; set; }
 
     }
 }
