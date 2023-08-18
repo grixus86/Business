@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\thinh.nguyenx\\source\\repos\\Business\\Business\\Business.csproj": {}
+    "C:\\Users\\thinh.nguyenx\\Desktop\\Business\\Business\\Business.csproj": {}
   },
   "projects": {
-    "C:\\Users\\thinh.nguyenx\\source\\repos\\Business\\Business\\Business.csproj": {
+    "C:\\Users\\thinh.nguyenx\\Desktop\\Business\\Business\\Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\thinh.nguyenx\\source\\repos\\Business\\Business\\Business.csproj",
+        "projectUniqueName": "C:\\Users\\thinh.nguyenx\\Desktop\\Business\\Business\\Business.csproj",
         "projectName": "Business",
-        "projectPath": "C:\\Users\\thinh.nguyenx\\source\\repos\\Business\\Business\\Business.csproj",
+        "projectPath": "C:\\Users\\thinh.nguyenx\\Desktop\\Business\\Business\\Business.csproj",
         "packagesPath": "C:\\Users\\thinh.nguyenx\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\thinh.nguyenx\\source\\repos\\Business\\Business\\obj\\",
+        "outputPath": "C:\\Users\\thinh.nguyenx\\Desktop\\Business\\Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\thinh.nguyenx\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,6 +42,38 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "EcmaScript.Net": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.9, )"
+            },
+            "Microsoft.AspNet.WebPages": {
+              "target": "Package",
+              "version": "[3.2.9, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Analyzers": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "NugetBusiness": {
+              "target": "Package",
+              "version": "[1.0.0.4, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.5, )"

@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    @using NugetBusiness.Models;
+}
+@{
+    @model NugetBusiness.Models.StaffModel
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <h2>Add Staff</h2>
+    <form asp-action="AddStaff" method="post">
+
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name" required>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+        </div>
+<div class="form-group">
+    <label for="Roles">RoleId</label>
+            <select class="form-control" id="RoleId" name="RoleId" required>
+        <option value="">Select Role</option>
+        @foreach (var role in ViewBag.Roles)
+        {
+            <option value="@role.Id">@role.Name</option>
+        }
+    </select>
+</div>
+
+        <div class="form-group">
+            <label asp-for="DepartmentId">Department</label>
+            <select class="form-control" id="DepartmentId" name="DepartmentId" required>
+                <option value="">Select Department</option>
+                @foreach (var departments in ViewBag.Departments)
+                {
+                    <option value="@departments.Id">@departments.Name</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Employee</button>
+        <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3"></div>
+
+    </form>
+    @if (TempData["ToastType"] != null && TempData["ToastMessage"] != null)
+    {
+        <script>
+            Toastify({
+                text: '@Html.Raw(TempData["ToastMessage"])',
+                duration: 3000,
+                gravity: 'bottom',
+                position: 'right',
+                backgroundColor: '@TempData["ToastType"]'
+            }).showToast();
+        </script>
+
+    }
+}
